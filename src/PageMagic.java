@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.Buffer;
+import java.util.ArrayList;
 
 /**
  * Created by Fisher Darling on 7/15/2017.
@@ -10,7 +12,7 @@ public class PageMagic {
 
     public static void main(String[] args) {
         PageMagic image = new PageMagic();
-        image.loadImage("C:\\Users\\fdarl\\Desktop\\215.jpg");
+        image.loadImage("C:\\Users\\fdarl\\Desktop\\215new.jpg");
         image.init();
     }
 
@@ -18,14 +20,25 @@ public class PageMagic {
     private BufferedImage cropImage;
 
     private int numPages;
-    private int sliceWidth;
+    private double sliceWidth;
+
+    private int width;
+    private int height;
+
+    private int cropHeight;
+    private int cropWidth;
+
+    private BufferedImage[] slices;
 
     public PageMagic() {
         image = null;
+        numPages = 0;
+        sliceWidth = 0;
     }
 
-    public PageMagic(String path) {
+    public PageMagic(String path, int pages) {
         loadImage(path);
+        numPages = pages;
         init();
     }
 
@@ -39,7 +52,27 @@ public class PageMagic {
     }
 
     private void init() {
-        cropImage = getCroppedImage(image, 2.0);
+        //Assuming user is cropping image.
+        //cropImage = getCroppedImage(image, 2.0);
+        width = image.getWidth();
+        height = image.getHeight();
+
+        sliceWidth = Math.round(width / numPages);
+
+        createSlices();
+    }
+
+    private void createSlices() {
+        slices = new BufferedImage[numPages];
+
+        int pixOff = sliceWidth * numPages - width;
+
+        for(i = 0; i < slices.length; i++) {
+            subimg = new BufferedImage(Math.max(sliceWidth, 16), height, image.getType());
+        }
+
+
+
     }
 
     private void split() {

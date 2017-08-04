@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<html>
 
 <head>
     <!-- Latest compiled and minified CSS -->
@@ -8,8 +9,55 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="pagemagic.css" rel="stylesheet">
+
 </head>
 
 <body>
 
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="#">About</a></li>
+                    <li role="presentation"><a href="#">Github</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Page Magic</h3>
+        </div>
+
+        <div class="container">
+            <div class="row" style="padding-top: 20px">
+                <h2 class="text-info text-center">About</h2>
+            </div>
+            <div class="row">
+                <p>Page Magic is a project that helps anyone create book art! Upload an image and input the number of pages,
+                    then press expand. Page Magic will then expand the image to a format useful for book art.</p>
+            </div>
+
+            <form role="form" style="padding-top: 20px">
+                <div class="form-inline">
+                    <label class="btn btn-primary" for="fileSelector">
+                    <input id="fileSelector" type="file" style="display:none" 
+                        onchange="$('#fileName').html(this.files[0].name)">    
+                        <span id="fileName">Choose an Image</span>
+                    </label>
+                    <input type="text" id="numPages" class="form-control" placeholder="Number of Pages">
+                    <input class="btn btn-submit" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+        <div class="container" id="imageDiv">
+
+        </div>
+    
+    </div>
+
+
+
 </body>
+
+</html>

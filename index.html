@@ -36,21 +36,21 @@
                     then press expand. Page Magic will then expand the image to a format useful for book art.</p>
             </div>
 
-            <form role="form" style="padding-top: 20px">
+            <form role="form" style="padding-top: 20px" onsubmit="expand()">
                 <div class="form-inline">
                     <label class="btn btn-primary" for="fileSelector">
                     <input id="fileSelector" type="file" style="display:none" 
-                        onchange="$('#fileName').html(this.files[0].name)">    
+                        onchange="$('#fileName').html(this.files[0].name);">    
                         <span id="fileName">Choose an Image</span>
                     </label>
                     <input type="text" id="numPages" class="form-control" placeholder="Number of Pages">
-                    <input class="btn btn-submit" type="submit" value="Submit" onclick="expand()">
+                    <input class="btn btn-submit" type="submit" value="Submit">
                 </div>
             </form>
         </div>
 
         <div class="container" id="imageDiv">
-
+            <img id="beforeImage">
         </div>
     
     </div>

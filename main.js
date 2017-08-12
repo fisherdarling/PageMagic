@@ -1,11 +1,33 @@
 function expand() {
-  var image = document.getElementById("fileSelector").files[0];
   var numPages = parseInt(document.getElementById("numPages").value);
+  
+  var imgFile = document.getElementById("fileSelector").files[0];
 
-//   alert(numPages);
+  var img = document.getElementById("beforeImage");
+  
+  img.title = imgFile.name;
+  img.src = URL.createObjectURL(imgFile);
+
+  alert(img.title + ", " + img.src);
+
+
+  // var reader = new FileReader();
+
+  // reader.onload = function (event) {
+  //   img.src = event.target.result;
+  // };
+
+  // img.title = file.name;
+  // reader.readAsDataURL(file);
+
+  // var canvas =
+
+
+
+  //   alert(numPages);
 
   //Check if page numbers were inputted.
-  if (!numPages) {
+  /*if (!numPages) {
       alert("Pages:")
       //data-dismiss='alert'
     $("#mainContainer").append(
@@ -18,5 +40,14 @@ function expand() {
   //Check if file exists.
   if (typeof image == "undefined") {
 
-  }
+  }*/
+
+
+
+
+
+}
+
+function createWarningAlert(text) {
+
 }

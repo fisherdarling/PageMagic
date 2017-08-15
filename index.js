@@ -1,44 +1,75 @@
-'use strict';
-const electron = require('electron');
+var button = document.getElementById("magic");
+button.addEventListener("click", magic);
 
-const app = electron.app;
+var picker = document.getElementById("fileSelector");
+function fileChange(event) {
+    var input = picker.files[0];
+    console.log("Getting Data");
+    var reader = new FileReader();
+    reader.onload = function() {
+        var dataURL = reader.result;
+        console.log("Executing Load");
 
-// Adds debug features like hotkeys for triggering dev tools and reload
-require('electron-debug')();
-
-// Prevent window being garbage collected
-let mainWindow;
-
-function onClosed() {
-	// Dereference the window
-	// For multiple windows store them in an array
-	mainWindow = null;
+        var output = document.getElementById("beforeImage");
+        output.src = dataURL;
+    };
+    reader.readAsDataURL(input);
 }
 
-function createMainWindow() {
-	const win = new electron.BrowserWindow({
-		width: 600,
-		height: 400
-	});
+function getData() {
+    var file = document.getElementById("fileSelector").files[0];
+    var nPages = parseInt(document.getElementById("numPages").value);
 
-	win.loadURL(`file://${__dirname}/index.html`);
-	win.on('closed', onClosed);
+    // console.log(file, nPages);
 
-	return win;
+    if (!file || !nPages) {
+        alert("Please make sure all inputs are filled and have proper data.");
+        console.log("Invalid Data");
+        return null;
+    }
+
+    // alert(!file);
+    // alert(file);
+    // alert(!nPages);
+    // alert(nPages);
+
+    console.log("Returning Files");
+
+    // console.log(file, nPages);
+
+    return { file, nPages };
 }
 
-app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin') {
-		app.quit();
-	}
-});
+function magic() {
+    var { file, nPages } = getData();
+    console.log(file, nPages);
+    if (!file || !nPages) return;
 
-app.on('activate', () => {
-	if (!mainWindow) {
-		mainWindow = createMainWindow();
-	}
-});
+    console.log("Creating Image");
 
-app.on('ready', () => {
-	mainWindow = createMainWindow();
-});
+    var img = document.getElementById("beforeImage");
+
+    if (img.width < nPages) {
+        alert(
+            "Image width cannot be less than the number of pages. The maximum number of pages for this image is: " +
+                img.width
+        );
+        return;
+    }
+
+    const width = img.width;
+    const height = img.height;
+
+    var preCanvas = document.createElement("canvas");
+    preCanvas.width = width;
+    preCanvas.height = height;
+
+    var preContext = preCanvas.getContext("2d");
+    preContext.drawImage(img, 0, 0);
+
+    //Calculate slice width:
+    //Assume pages > than width.
+    // var sW = width / nPages;
+
+    console.log(width, height /*sW*/);
+}

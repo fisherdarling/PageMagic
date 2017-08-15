@@ -1,33 +1,20 @@
 {
-  "name": "app",
-  "productName": "App",
-  "version": "0.0.0",
+  "name": "pagemagic",
+  "version": "1.0.0",
   "description": "",
-  "license": "MIT",
-  "repository": "user/repo",
-  "author": {
-    "name": "",
-    "email": "",
-    "url": ""
-  },
+  "main": "index.js",
   "scripts": {
-    "test": "xo",
-    "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all"
+    "start": "electron main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "electron-debug": "^1.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harpo109/PageMagic.git"
   },
-  "devDependencies": {
-    "devtron": "^1.1.0",
-    "electron-packager": "^8.0.0",
-    "electron": "^1.6.6",
-    "xo": "^0.18.0"
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harpo109/PageMagic/issues"
   },
-  "xo": {
-    "envs": [
-      "node",
-      "browser"
-    ]
-  }
+  "homepage": "https://github.com/harpo109/PageMagic#readme"
 }

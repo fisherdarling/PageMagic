@@ -1,20 +1,23 @@
 {
-  "name": "pagemagic",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "electron main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/harpo109/PageMagic.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/harpo109/PageMagic/issues"
-  },
-  "homepage": "https://github.com/harpo109/PageMagic#readme"
+    "name": "pagemagic",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./index.js",
+    "scripts": {
+        "start": "electron main.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/harpo109/PageMagic.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/harpo109/PageMagic/issues"
+    },
+    "homepage": "https://github.com/harpo109/PageMagic#readme",
+    "dependencies": {
+        "jquery": "^3.2.1"
+    }
 }

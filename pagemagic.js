@@ -3,8 +3,13 @@ const Jimp = require("Jimp");
 function magic(path, numPages) {
     Jimp.read(path, function(err, image) {
         if (err) {
+            console.log(path);
             console.log(err);
+
+            return false;
         }
+
+        console.log(path, numPages);
 
         image.resize(numPages, Jimp.AUTO, Jimp.RESIZE_NEAREST_NEIGHBOR);
 
@@ -21,6 +26,8 @@ function magic(path, numPages) {
         var imgH = new_img.bitmap.height;
 
         // Transfer slices of the original image to the new image.
+
+        console.log("Processing");
 
         for (var i = 0; i < pImgW; i++) {
             for (var j = 0; j < 40; j++) {
@@ -51,7 +58,15 @@ function magic(path, numPages) {
 
         // new_img.autocrop();
 
-        var file = "imageProcessed." + image.getExtension();
+        console.log("Saving new image");
+
+        var file =
+            require("path").dirname(path) +
+            "\\imageProcessed." +
+            image.getExtension();
+
+        console.log(file);
+
         new_img.write(file);
     });
 }

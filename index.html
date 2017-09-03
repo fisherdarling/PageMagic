@@ -36,13 +36,21 @@
         </div>
     </div>
 
-    <div class="container" style="padding-top: 40px">
-        <form class="form-inline">
-            <div class="form"></div>
+    <div class="container" style="padding-top: 15px">
+        <form class="form-row justify-content-center">
+            <div class="col-auto">
+                <button class="btn btn-primary" type="button" id="fileSelector" onclick="fileInput();">Choose a File</button>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" placeholder="Number of Pages" id="numPages">
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-success" type="button" id="magic">Magic!</button>
+            </div>
         </form>
     </div>
 
-
+    <script src=".\index.js"></script>
     <script src=".\node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
 
     <script>
